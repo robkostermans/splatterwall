@@ -4,9 +4,11 @@ html
         link(href='index.css', rel='stylesheet',type="text/css")
     body
     main
-        h1 Splatter Wall 
-        <ul id="messages"></ul>
-        <button type="button" id="post-btn">Post</button>
+       
+        include components/theWall/the_wall.pug
+        
+        include components/theApp/the_app.pug
+        
     footer
         span(id='numberOfConnections') #
         span(id='orientation') #

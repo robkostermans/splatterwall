@@ -22,9 +22,10 @@ document.getElementById('post-btn').onclick = function () {
 
 socketize.subscribe('splatterwall', function(message) {
     // Add items to ul
-    console.log(message)
-    var liHtml = '<li>' + message.name + message.city +  '</li>';
-    document.getElementById('messages').insertAdjacentHTML('beforeend', liHtml);
+    //console.log(message)
+    //var liHtml = '<li>' + message.name + message.city +  '</li>';
+    //document.getElementById('messages').insertAdjacentHTML('beforeend', liHtml);
+    splatter.receiveSplat(window.event);
 });
 
 
