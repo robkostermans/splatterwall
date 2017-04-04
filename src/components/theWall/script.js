@@ -54,7 +54,7 @@ function success(pos) {
 
 function error(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
-  alert(err.message)
+  //alert(err.message)
 };
 
 navigator.geolocation.getCurrentPosition(success, error, options);

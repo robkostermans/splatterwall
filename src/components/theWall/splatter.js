@@ -5,10 +5,10 @@ splatter.canvas = document.getElementById('canvas'),
 splatter.ctx = canvas.getContext('2d'),
 splatter.focused = false,
 splatter.clicked = false;
-
+splatter.active = false;
 splatter.shadow = document.createElement('canvas'),
 splatter.sctx = splatter.shadow.getContext('2d');
-
+splatter.appWallSwitch = window.matchMedia( "(min-width: 767px)" );
 splatter.items = [];
 splatter.mouse = {
     x: 0,
@@ -33,17 +33,34 @@ splatter.canvas.width = splatter.shadow.width = window.innerWidth;
 splatter.canvas.height = splatter.shadow.height = window.innerHeight;
 splatter.sctx.fillStyle = splatter.ctx.fillStyle = '#aa0707'; // rgba(250,0,0,0.1)'
 
-window.addEventListener('resize',function(){
-    splatter.canvas.width = splatter.shadow.width = window.innerWidth;
-    splatter.canvas.height = splatter.shadow.height = window.innerHeight;
-}, false);
+
 
 window.addEventListener('load', function(){
-    splatter.drawloop();
+    splatter.init();
+    splatter.appWallSwitch.addListener(splatter.init);
 }, false)
 
+
+splatter.init = function(){
+    if(splatter.appWallSwitch.matches){
+        splatter.active = true;
+    }else{
+        splatter.active = false;
+        
+    }
+    
+    window.addEventListener('resize',function(){
+        splatter.canvas.width = splatter.shadow.width = window.innerWidth;
+        splatter.canvas.height = splatter.shadow.height = window.innerHeight;
+    }, false);
+    splatter.drawloop();
+
+}
+
 splatter.drawloop = function() {
-    requestAnimationFrame(splatter.drawloop);
+    if(splatter.active){
+        requestAnimationFrame(splatter.drawloop);
+    }
     splatter.ctx.clearRect(0, 0, splatter.canvas.width, splatter.canvas.height)
     splatter.drawsplat(splatter.items)
 }
