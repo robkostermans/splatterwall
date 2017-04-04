@@ -1,5 +1,10 @@
+var wall = wall || {};
+wall.theWall = document.getElementById("wall")
+
 
 var params = {
+    'wall_id': "0001",
+    'wall_prefix' : "splatterwall_",
     'public_key': 'gWKneA_PyJXFoX3AYF7wc3d', 
     'auth_params': {
         'username': 'admin',
@@ -7,20 +12,26 @@ var params = {
     }};
 var socketize = new Socketize.client(params);
 
+wall.init = function(){
+  wall.theWall.dataset.wall_id = params.wall_id;
+  socketize.set("splatterwall_"+params.wall_id);
+}
+
+window.addEventListener('load', function(){
+    wall.init();
+}, false)
+
 
 document.getElementById('post-btn').onclick = function () {
-    socketize.publish('splatterwall', {name: 'Rob', city: 'Amsterdam'});
-    
-    /*socketize.pushOnList('splatterwall', {name: 'Rob', city: 'Amsterdam'}).then(function(response) {
-        // successful
-        console.log(1)
-    }).catch(function(response) {
-        // error
-    });*/
+
+    var postToWallId = document.getElementById("post_to_wall_id").value;
+    if(postToWallId && postToWallId==wall.theWall.dataset.wall_id){
+      socketize.publish(params.wall_prefix+postToWallId, {name: 'Rob', city: 'Amsterdam'});
+    }
 };
 
 
-socketize.subscribe('splatterwall', function(message) {
+socketize.subscribe(params.wall_prefix+params.wall_id, function(message) {
     // Add items to ul
     //console.log(message)
     //var liHtml = '<li>' + message.name + message.city +  '</li>';

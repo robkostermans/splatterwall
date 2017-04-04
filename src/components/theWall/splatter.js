@@ -1,8 +1,8 @@
 
 var splatter = splatter || {};
 
-splatter.canvas = document.getElementById('canvas'),
-splatter.ctx = canvas.getContext('2d'),
+splatter.canvas = document.getElementById('wall'),
+splatter.ctx = splatter.canvas.getContext('2d'),
 splatter.focused = false,
 splatter.clicked = false;
 splatter.active = false;
