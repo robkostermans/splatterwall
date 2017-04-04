@@ -1,11 +1,41 @@
+$fontFamily : 'Roboto', cursive;
 #theApp {
+    font-family: $fontFamily;
+    font-size:20px;
     display: none;
     #settings{
+        bottom:0;
+        box-sizing: border-box;
         list-style:none;
-        padding:0;
         margin:0;
+        padding:1em;
+        position:absolute;
+        width:100%;
+        li{
+            position: relative;
+            text-align: right;
+            input[type="text"]{
+                font-family: $fontFamily;
+                font-weight:bolder;
+                font-size:1em;
+                color:#fff;
+                background:none;
+                border:0;
+                line-height:1.9em;
+                margin:0;
+                padding:0;
+                padding-right:34px;
+                text-align:right;
+                &:focus,&:active{
+                    outline:0;
+                }
+            }
+        }
         .material-icons{
             color:#fff;
+            height:100%;
+            position: absolute;
+            right:0;
         }
     }
 }
@@ -15,15 +45,14 @@
         display: none;
     }
     #theApp {
-        display:block;
-        position: fixed;
-        overflow: hidden;
         background-color: #000;
+        bottom: 0;
+        display:block;
+        height: 100%;
+        overflow: hidden;
+        position: fixed;
+        right: 0;
         transition: all 1s;
         width: 100%;
-        height: 100%;
-        bottom: 0;
-        right: 0;
-       
     }
 }
