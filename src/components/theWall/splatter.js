@@ -43,12 +43,9 @@ window.addEventListener('load', function(){
 }, false)
 
 splatter.drawloop = function() {
-    //if (splatter.focused) {
-        requestAnimationFrame(splatter.drawloop);
-    //}
+    requestAnimationFrame(splatter.drawloop);
     splatter.ctx.clearRect(0, 0, splatter.canvas.width, splatter.canvas.height)
     splatter.drawsplat(splatter.items)
-
 }
 
 
