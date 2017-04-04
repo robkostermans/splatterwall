@@ -16,9 +16,11 @@ $fontFamily : 'Roboto', cursive;
         text-decoration: none;
         top:50%;
         transform:translateX(-50%) translateY(-50%);
+        transition: all 1s;
         vertical-align:middle;
         width:100px;
-        &:active{
+
+        &.active{
             opacity:1;
         }
     }

@@ -21,8 +21,11 @@ window.addEventListener('load', function(){
     wall.init();
 }, false)
 
-document.getElementById('post-btn').onchange = function () {
+document.getElementById('post_to_wall_id').oninput = function () {
+
+  var postToWallId = document.getElementById("post_to_wall_id").value;
    if(postToWallId && postToWallId==wall.theWall.dataset.wall_id){
+     console.log(1)
      document.getElementById('post-btn').classList.add("active")
    }else{
      document.getElementById('post-btn').classList.remove("active")
