@@ -1,8 +1,27 @@
 $fontFamily : 'Roboto', cursive;
+
 #theApp {
     font-family: $fontFamily;
     font-size:20px;
     display: none;
+    #post-btn{
+        display: inline-block;
+        background:#fff;
+        color:#000;
+        left:50%;
+        line-height:100px;
+        opacity:0.35;
+        position:fixed;
+        text-align:center;
+        text-decoration: none;
+        top:50%;
+        transform:translateX(-50%) translateY(-50%);
+        vertical-align:middle;
+        width:100px;
+        &:active{
+            opacity:1;
+        }
+    }
     #settings{
         bottom:0;
         box-sizing: border-box;
@@ -38,6 +57,7 @@ $fontFamily : 'Roboto', cursive;
             right:0;
         }
     }
+
 }
 
 @media (max-width: 767px) {
